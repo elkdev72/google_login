@@ -40,20 +40,23 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "socialauth",
     "django.contrib.sites",
-    "allauth",
-    "allauth.account",
-    "allauth.socialaccount",
-    "allauth.socialaccount.providers.google",
+     'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # Add the specific provider apps here (e.g.)
+    'allauth.socialaccount.providers.google',
 
 ]
 SOCIALACCOUNT_PROVIDERS = {
-    "google":{
-        "SCOPE":[
-            "profile",
-            "email",
+    'google':{
+        'SCOPE': [
+            'profile',
+            'email',
         ],
-        "AUTH_PARAMS":{"access_type":""},
-     }
+        'AUTH_PARAMS': {
+            'access_type': 'online',  # Set access_type to 'offline' for obtaining refresh tokens
+        },
+    }
 }
 
 
@@ -143,7 +146,7 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
-    "allauth.account.auth_backend.AuthenticationBackend"
+    'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 LOGIN_REDIRECT = '/'
